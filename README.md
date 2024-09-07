@@ -41,7 +41,7 @@ We are going to implement the solution using the following steps to implement th
 6. Now Create cloudbuild.yaml file to build and push docker images to Artifact registry for both application and Configure a Cloud Build trigger to initiate the pipeline upon code push events in the GitHub repository.
 7. Implement the necessary code to define the Cloud Deploy pipeline and targets for both dev-cluster and prod-cluster.
 8. Push the updated code to the GitHub repository, triggering the Cloud Build and Cloud Deploy processes.
-9. Once pipeline deployed successfully, Access the spring boot application by accessing Endpoints IP and port (<IPAddress:port/welccome)
+9. Once pipeline deployed successfully, Access the spring boot application by accessing Endpoints IP and port (<IPAddress:port/welcome)
 
 ![Alt text](https://github.com/kirans3989/gcp-devops-code/blob/53d6a43b492f67906e02788c04ca66f09b11c958/repo-3/GCP%20Delivery%20Pipeline.jpg)
  
