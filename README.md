@@ -13,6 +13,9 @@ To achieve our goal, we have the following requirements:
 - Automation of the entire deployment process, triggered by a developer’s code push.
 - Dev-cluster deployment precedes production deployment, allowing for review before promoting to the prod-cluster.
 
+## Note
+ - Replace **<your_project_id>** with your Google Cloud project ID in the code
+
 ## Architecture
 
 ![image](https://github.com/vishal-bulbule/gke-test/assets/143475073/66c914bb-4466-4a23-b977-f0880e1e1f12)
