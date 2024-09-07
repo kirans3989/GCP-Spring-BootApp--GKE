@@ -1,0 +1,33 @@
+steps:
+  # Clone the repository
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/kirans3989/gcp-devops-code.git']
+
+  # Run Maven to clean and package the Java application
+  - name: 'gcr.io/cloud-builders/mvn'
+    dir: 'gcp-devops-code/repo-3'
+    args: ['clean', 'package']
+
+  # Build the Docker image using the Dockerfile from the cloned repository
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'gcp-devops-code/repo-3'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gcp-springboot-applications', '.']
+
+  # Push the Docker image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/gcp-springboot-applications']
+
+  # Deploy to GKE using Cloud Deploy
+  - name: 'google/cloud-sdk:latest'
+    entrypoint: 'sh'
+    args:
+    - -xe
+    - -c
+    - |
+      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/pipeline.yaml --region=us-central1
+      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/dev.yaml --region=us-central1
+      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/prod.yaml --region=us-central1
+      gcloud deploy releases create 'application-release-${SHORT_SHA}' --delivery-pipeline=cicd-pipeline --region=us-central1 --from-k8s-manifest=repo-3/kubernetes/deploy.yaml
+
+options:
+  logging: CLOUD_LOGGING_ONLY
