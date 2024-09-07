@@ -15,6 +15,7 @@ To achieve our goal, we have the following requirements:
 
 ## Note
  - Replace **<your_project_id>** with your Google Cloud project ID in the code
+ - Replace **cluster name** with your GKE cluster name in dev.yaml and prod.yaml file
 
 ## Architecture
 
