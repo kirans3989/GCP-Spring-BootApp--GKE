@@ -24,10 +24,10 @@ steps:
     - -xe
     - -c
     - |
-      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/pipeline.yaml --region=us-central1
-      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/dev.yaml --region=us-central1
-      gcloud deploy apply --file gcp-devops-code/repo-3/deploy/prod.yaml --region=us-central1
-      gcloud deploy releases create 'application-release-${SHORT_SHA}' --delivery-pipeline=cicd-pipeline --region=us-central1 --from-k8s-manifest=repo-3/kubernetes/deploy.yaml
+      gcloud deploy apply --file GCP-Spring-BootApp--GKE/deploy/pipeline.yaml --region=us-central1
+      gcloud deploy apply --file GCP-Spring-BootApp--GKE/deploy/dev.yaml --region=us-central1
+      gcloud deploy apply --file GCP-Spring-BootApp--GKE/deploy/prod.yaml --region=us-central1
+      gcloud deploy releases create 'application-release-${SHORT_SHA}' --delivery-pipeline=cicd-pipeline --region=us-central1 --from-k8s-manifest=./kubernetes/deploy.yaml
 
 options:
   logging: CLOUD_LOGGING_ONLY
