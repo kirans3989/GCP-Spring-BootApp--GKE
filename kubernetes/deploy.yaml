@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: nodecontainer
-          image: gcr.io/gcp-dev-426803/gcp-springboot-applications
+          image: gcr.io/<your_project_id>/gcp-springboot-applications
           ports:
             - containerPort: 8080
 
